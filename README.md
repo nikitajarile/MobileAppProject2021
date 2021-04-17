@@ -28,3 +28,13 @@ Proposed Project Idea:  Women Safety App
    Java, Kotlin as a core language.
    Android SDK 26
    SQLite as back end.
+   
+   ![](App%20Design%20Prototype/1-welcome_screen.png)
+   
+   ![](App%20Design%20Prototype/2-Login.png)
+   
+   ![](App%20Design%20Prototype/3-Register.png)
+   
+   ![](App%20Design%20Prototype/4-FeatureScreen.png)
+   
+   ![](App%20Design%20Prototype/5-Settings_screen.png)
