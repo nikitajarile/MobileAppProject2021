@@ -28,13 +28,32 @@ Proposed Project Idea:  Women Safety App
    Java, Kotlin as a core language.
    Android SDK 26
    SQLite as back end.
+  
+  <h2>Pen and Paper design</h2>
+  
+  
+  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/1-welcome_screen.png" width="250px" />
+  
+  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/2-Login.png" width="250px" />
+  
+  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/3-Register.png" width="250px" />
+  
+  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/4-FeatureScreen.png" width="250px" />
+  
+  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/5-Settings_screen.png" width="250px" />
+  
    
-   ![](App%20Design%20Prototype/1-welcome_screen.png)
    
-   ![](App%20Design%20Prototype/2-Login.png)
+   <h3>Technologies:</h3>
    
-   ![](App%20Design%20Prototype/3-Register.png)
+   Android Studio
    
-   ![](App%20Design%20Prototype/4-FeatureScreen.png)
+   Google MAPs API
    
-   ![](App%20Design%20Prototype/5-Settings_screen.png)
+   Firebase
+
+   <h3>Current Status of Project</h3>
+   
+   April 10,2021 : Done with the pen and paper design
+   
+   April 17,2021 : We have implemented the login and register page for the app and also we are geetting a message with the live location when we use the alert option
