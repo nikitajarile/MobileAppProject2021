@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Login Task</string>
+    <string name="login_name">Login</string>
+    <string name="signup_name">Sign up</string>
+    <string name="email_name">Email address</string>
+    <string name="phone">Phone</string>
+    <string name="Welcome">Welcome</string>
+    <string name="password_name">Password</string>
+    <string name="dont_name">Don\'t have an account? </string>
+    <string name="already_name"> Already have an account? </string>
+    <string name="BraveU">BraveU </string>
+    <string name="sign_out">SIGN OUT</string>
+    <string name="to">TO</string>
+    <string name="login_info">Login to report and be aware of the crimes happening in your locality and beyond</string>
+    <string name="signup_info">Sign up now to contribute to the safety and security in your locale</string>
+    <string name="phone_hint">phone_hint</string>
+    <string name="alert">Alert</string>
+    <string name="no_address_found">Address Not Found</string>
+    <string name="service_not_available">Service is not available</string>
+    <string name="invalid_lat_long_used">Invalid data used</string>
+    <string name="no_location">No location found</string>
+    <string name="location_permission_denied">Permission denied</string>
+    <string name="address_text">"Address: %1$s \n Timestamp: %2$tr"</string>
+</resources>

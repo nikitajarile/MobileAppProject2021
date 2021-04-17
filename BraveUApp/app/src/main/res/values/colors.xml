@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="signIn">#1E3F5B</color>
+    <color name="transTo">#A61E3F5B</color>
+    <color name="grayEdit">#E6E4E4</color>
+    <color name="editText">#989EA4</color>
+</resources>

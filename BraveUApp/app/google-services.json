@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "258112572932",
+    "firebase_url": "https://logintask-98764.firebaseio.com",
+    "project_id": "logintask-98764",
+    "storage_bucket": "logintask-98764.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258112572932:android:07ec19db5cd37429972f51",
+        "android_client_info": {
+          "package_name": "com.example.logintask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258112572932-e00s95sagf8e2qhs04i8nnq906s72q94.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.logintask",
+            "certificate_hash": "4bea7b484d95d2cc16dd1274528acdeb8b3d0a2e"
+          }
+        },
+        {
+          "client_id": "258112572932-j1n24uls7guq6at9325mhlr196506sfm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMnYTqNO3fgvzvyigNykxW6CVTQKtLzic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "258112572932-j1n24uls7guq6at9325mhlr196506sfm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
