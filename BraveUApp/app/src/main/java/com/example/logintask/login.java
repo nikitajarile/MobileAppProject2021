@@ -47,7 +47,6 @@ public class login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null){
-                    Log.i("Phone number",firebaseUser.getPhoneNumber());
                     Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     Intent home = new Intent(login.this, dashboard.class);
                     startActivity(home);

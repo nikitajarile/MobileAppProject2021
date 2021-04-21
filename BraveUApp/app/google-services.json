@@ -1,42 +1,33 @@
 {
   "project_info": {
-    "project_number": "258112572932",
-    "firebase_url": "https://logintask-98764.firebaseio.com",
-    "project_id": "logintask-98764",
-    "storage_bucket": "logintask-98764.appspot.com"
+    "project_number": "1041607556344",
+    "project_id": "braveu-45098",
+    "storage_bucket": "braveu-45098.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:258112572932:android:07ec19db5cd37429972f51",
+        "mobilesdk_app_id": "1:1041607556344:android:657f4e433abeafa2cacf0d",
         "android_client_info": {
           "package_name": "com.example.logintask"
         }
       },
       "oauth_client": [
         {
-          "client_id": "258112572932-e00s95sagf8e2qhs04i8nnq906s72q94.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.logintask",
-            "certificate_hash": "4bea7b484d95d2cc16dd1274528acdeb8b3d0a2e"
-          }
-        },
-        {
-          "client_id": "258112572932-j1n24uls7guq6at9325mhlr196506sfm.apps.googleusercontent.com",
+          "client_id": "1041607556344-sduo98r2jackncjrtq2vrphk5irlq6gm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDMnYTqNO3fgvzvyigNykxW6CVTQKtLzic"
+          "current_key": "AIzaSyBanj-58V8d5Y_EYhqPFfwbPiY6qdUZpAc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "258112572932-j1n24uls7guq6at9325mhlr196506sfm.apps.googleusercontent.com",
+              "client_id": "1041607556344-sduo98r2jackncjrtq2vrphk5irlq6gm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
