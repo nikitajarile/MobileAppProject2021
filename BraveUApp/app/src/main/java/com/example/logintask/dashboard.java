@@ -10,6 +10,8 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +55,14 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         emailText = (TextView) findViewById(R.id.email_conf);
         username = (TextView) findViewById(R.id.username_conf);
         String name = user.getDisplayName();
-
+        final ImageView settings = findViewById(R.id.imageView10);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(dashboard.this,com.example.logintask.settings.class);
+                startActivity(intent);
+            }
+        });
 
         username.setText(name);
         emailText.setText(user.getEmail());
