@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login Task</string>
+    <string name="app_name">BraveU</string>
     <string name="login_name">Login</string>
     <string name="signup_name">Sign up</string>
     <string name="email_name">Email address</string>
@@ -23,4 +23,5 @@
     <string name="address_text">"Address: %1$s \n Timestamp: %2$tr"</string>
     <string name="emergencyContact">Emergency Contact</string>
     <string name="name">Name</string>
+    <string name="emergencyText"><b>Emergency</b>  Please help!\n\n Find me here:\n</string>
 </resources>

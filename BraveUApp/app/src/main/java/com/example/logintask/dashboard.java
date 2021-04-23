@@ -164,6 +164,7 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
 
                     }
 
+
                 });
 
             }
@@ -193,7 +194,12 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
                             }
                             mFusedLocationClient.requestLocationUpdates
                                     (getLocationRequest(), mLocationCallback,
-                                            null /* Looper */);
+                                            null /* Looper */).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                   stopTrackingLocation();
+                                }
+                            });
 
                             if (location != null) {
                                 mLastLocation = location;
@@ -225,7 +231,10 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
     private void sendSMS(String contact){
         SmsManager smsManager = SmsManager.getDefault();
 
-        smsManager.sendTextMessage(contact, null, "http://maps.google.com/?q="+mLastLocation.getLatitude()+","+mLastLocation.getLongitude(), null, null);
+        smsManager.sendTextMessage(contact, null, getString(R.string.emergencyText)+"http://maps.google.com/?q="+mLastLocation.getLatitude()+","+mLastLocation.getLongitude(), null, null);
+
+        Toast.makeText(dashboard.this,"Alert message sent!",Toast.LENGTH_LONG).show();
+        Log.i("Message text", getString(R.string.emergencyText)+"http://maps.google.com/?q="+mLastLocation.getLatitude()+","+mLastLocation.getLongitude());
         Log.i("Dashboard", String.valueOf(mLastLocation.getLatitude()));
         Log.i("Dashboard", String.valueOf(mLastLocation.getLongitude()));
     }
