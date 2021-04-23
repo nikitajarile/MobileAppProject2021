@@ -15,10 +15,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.UserWriteRecord;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,18 +34,33 @@ import androidx.core.app.ActivityCompat;
 import androidx.annotation.NonNull;
 
 
-public class dashboard extends AppCompatActivity implements FetchAddressTask.OnTaskCompleted{
-    Button signOut;
-    Button alert;
+public class dashboard extends AppCompatActivity implements FetchAddressTask.OnTaskCompleted {
+    //Constants
+    private static final int REQUEST_LOCATION_PERMISSION = 0;
+    private static final int REQUEST_SMS_PERMISSION = 1;
+    private static final String TRACKING_LOCATION_KEY = "tracking_location";
+
+    //Views
+    private Button signOut;
+    private Button alert;
+    private ProgressBar progressBar;
+    private TextView emailText;
+    private TextView username;
+
+    //User Information
+    private String contact;
+
+    //Firebase
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authListener;
-    ProgressBar progressBar;
-    TextView emailText;
-    TextView username;
-    private static final int REQUEST_LOCATION_PERMISSION = 0;
-    private static final int PERMISSION_REQUEST_CODE = 1;
-    Location mLastLocation;
-    FusedLocationProviderClient mFusedLocationClient;
+
+    //Location Classes
+    private Location mLastLocation;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private DatabaseReference databaseReference;
+    private LocationCallback mLocationCallback;
+    Boolean mTrackingLocation = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +68,7 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         setContentView(R.layout.activity_dashboard);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
         progressBar = (ProgressBar) findViewById(R.id.progresSign);
         signOut = (Button) findViewById(R.id.btnSignout);
         alert = findViewById(R.id.btn_alert);
@@ -53,7 +77,6 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         emailText = (TextView) findViewById(R.id.email_conf);
         username = (TextView) findViewById(R.id.username_conf);
         String name = user.getDisplayName();
-
 
         username.setText(name);
         emailText.setText(user.getEmail());
@@ -77,18 +100,67 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
             }
         });
 
+        // Restore the state if the activity is recreated.
+        if (savedInstanceState != null) {
+            mTrackingLocation = savedInstanceState.getBoolean(
+                    TRACKING_LOCATION_KEY);
+        }
+
+        // Initialize the location callbacks.
+        mLocationCallback = new LocationCallback() {
+            /**
+             * This is the callback that is triggered when the
+             * FusedLocationClient updates your location.
+             * @param locationResult The result containing the device location.
+             */
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                // If tracking is turned on, reverse geocode into an address
+
+                if (mTrackingLocation) {
+                    new FetchAddressTask(dashboard.this, dashboard.this)
+                            .execute(locationResult.getLastLocation());
+                }
+
+            }
+        };
+
         alert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
-                
-                getLocation();
+                databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseuser.getUid());
+
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        User user = dataSnapshot.getValue(User.class);
+                        contact = user.getEmergencyContact();
+                        Log.i("Emergency contact", contact);
+
+                        if (!mTrackingLocation) {
+                            startTrackingLocation(contact);
+
+                        } else {
+                            stopTrackingLocation();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                });
+
             }
         });
 
     }
 
-    private void getLocation() {
+    private void startTrackingLocation(final String contact) {
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -96,33 +168,42 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
                             {Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_LOCATION_PERMISSION);
         } else {
+            mTrackingLocation = true;
             mFusedLocationClient.getLastLocation().addOnSuccessListener(
                     new OnSuccessListener<Location>() {
                         @Override
                         public void onSuccess(Location location) {
+
+                            if (ActivityCompat.checkSelfPermission(dashboard.this,Manifest.permission.SEND_SMS)
+                                    == PackageManager.PERMISSION_DENIED) {
+                                Log.d("permission", "permission denied to SEND_SMS - requesting it");
+                                ActivityCompat.requestPermissions(dashboard.this,new String[]{Manifest.permission.SEND_SMS}, REQUEST_SMS_PERMISSION);
+
+                            }
+                            mFusedLocationClient.requestLocationUpdates
+                                    (getLocationRequest(), mLocationCallback,
+                                            null /* Looper */);
+
                             if (location != null) {
                                 mLastLocation = location;
 
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                                Log.i("Location",location.toString());
+                                Log.i("Location",mLastLocation.toString());
 
-                                    if (checkSelfPermission(Manifest.permission.SEND_SMS)
-                                            == PackageManager.PERMISSION_DENIED) {
+                                if (ActivityCompat.checkSelfPermission(dashboard.this,Manifest.permission.SEND_SMS)
+                                        == PackageManager.PERMISSION_DENIED) {
+                                    Log.d("permission", "permission denied to SEND_SMS - requesting it");
+                                    ActivityCompat.requestPermissions(dashboard.this,new String[]{Manifest.permission.SEND_SMS}, REQUEST_SMS_PERMISSION);
 
-                                        Log.d("permission", "permission denied to SEND_SMS - requesting it");
-                                        String[] permissions = {Manifest.permission.SEND_SMS};
-
-                                        ActivityCompat.requestPermissions(dashboard.this,new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_CODE);
-
-                                    }
                                 }
-                                SmsManager smsManager = SmsManager.getDefault();
-                                smsManager.sendTextMessage("+17866085254", null, "http://maps.google.com/?q="+mLastLocation.getLatitude()+","+mLastLocation.getLongitude(), null, null);
-                                Log.i("Dashboard", String.valueOf(mLastLocation.getLatitude()));
-                                Log.i("Dashboard", String.valueOf(mLastLocation.getLongitude()));
+                                else {
+                                    sendSMS(contact);
+                                }
+
                                 new FetchAddressTask(dashboard.this,
                                         dashboard.this).execute(location);
                             } else {
-                                Log.i("Dashboard", String.valueOf(R.string.no_location));
+                                Log.i("Dashboard", getString(R.string.no_location));
                             }
                         }
                     });
@@ -130,6 +211,13 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
 
     }
 
+    private void sendSMS(String contact){
+        SmsManager smsManager = SmsManager.getDefault();
+
+        smsManager.sendTextMessage(contact, null, "http://maps.google.com/?q="+mLastLocation.getLatitude()+","+mLastLocation.getLongitude(), null, null);
+        Log.i("Dashboard", String.valueOf(mLastLocation.getLatitude()));
+        Log.i("Dashboard", String.valueOf(mLastLocation.getLongitude()));
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -139,7 +227,7 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
                 // otherwise, show a Toast
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    getLocation();
+                    sendSMS(contact);
                 } else {
                     Toast.makeText(this,
                             R.string.location_permission_denied,
@@ -155,4 +243,46 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         Log.i("Dashboard",getString(R.string.address_text,
                 result, System.currentTimeMillis()));
     }
+
+    private LocationRequest getLocationRequest() {
+        LocationRequest locationRequest = new LocationRequest();
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(5000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        return locationRequest;
+    }
+
+    private void stopTrackingLocation() {
+        if (mTrackingLocation) {
+            mTrackingLocation = false;
+            mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (mTrackingLocation) {
+            stopTrackingLocation();
+            mTrackingLocation = true;
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        if (mTrackingLocation) {
+            startTrackingLocation(contact);
+        }
+        super.onResume();
+    }
+
+    /**
+     * Saves the last location on configuration change
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean(TRACKING_LOCATION_KEY, mTrackingLocation);
+        super.onSaveInstanceState(outState);
+    }
 }
+
