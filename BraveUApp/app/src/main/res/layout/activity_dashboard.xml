@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".dashboard">
 
     <TextView
@@ -105,11 +106,11 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btn_alert4"
+        android:id="@+id/btn_nearby"
         android:layout_width="135dp"
         android:layout_height="61dp"
         android:backgroundTint="#009688"
-        android:text="NEARBY POLICE STATION"
+        android:text="@string/nearby_police_station"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/btnSignout"
         app:layout_constraintEnd_toEndOf="parent"

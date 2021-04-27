@@ -45,6 +45,7 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
     //Views
     private Button signOut;
     private Button alert;
+    private Button nearby;
     private ProgressBar progressBar;
     private TextView emailText;
     private TextView username;
@@ -74,6 +75,7 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         progressBar = (ProgressBar) findViewById(R.id.progresSign);
         signOut = (Button) findViewById(R.id.btnSignout);
         alert = findViewById(R.id.btn_alert);
+        nearby = findViewById(R.id.btn_nearby);
         auth = FirebaseAuth.getInstance();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         emailText = (TextView) findViewById(R.id.email_conf);
@@ -167,6 +169,16 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
 
                 });
 
+            }
+        });
+
+        nearby.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nearbyIntent = new Intent(dashboard.this, NearByPoliceStation.class);
+                nearbyIntent.putExtra("latitude",40.7510083);
+                nearbyIntent.putExtra("longitude",-74.15175);
+                startActivity(nearbyIntent);
             }
         });
 

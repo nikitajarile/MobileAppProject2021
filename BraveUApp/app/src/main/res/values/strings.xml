@@ -24,4 +24,6 @@
     <string name="emergencyContact">Emergency Contact</string>
     <string name="name">Name</string>
     <string name="emergencyText"><b>Emergency</b>  Please help!\n\n Find me here:\n</string>
+    <string name="APIKEY">AIzaSyAVT9I2J6LzDOTwhJNbK347xZjc6Ginz8U</string>
+    <string name="nearby_police_station">NEARBY POLICE STATION</string>
 </resources>
