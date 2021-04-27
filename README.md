@@ -2,7 +2,7 @@ This is a repository specially created for Final Project of Mobile App Developme
 
 Team members: Revati Deshmukh, Nikita Jarile and Pranav Kullappa
 
-Proposed Project Idea:  Women Safety App
+<h3>Proposed Project Idea:</h3>  Women Safety App
 
 1.	What is/are the problem/s you want to solve? Please provide background based on research. 
 
@@ -59,3 +59,5 @@ Proposed Project Idea:  Women Safety App
    April 17,2021 : We have implemented the login and register page for the app and also we are geetting a message with the live location when we use the alert option
    
    April 23,2021 : We have saved user data to Firebase Authentication and realtime database.Now we are getting emergency contacts information from firebase.Also we modified the SMS with text and link to live location of the logged in user.
+   
+   April 27,2021 : We have added Nearby Police station functionality to the app.Now on clicking nearby option user can view police stations near here.
