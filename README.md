@@ -56,7 +56,7 @@ Team members: Revati Deshmukh, Nikita Jarile and Pranav Kullappa
    
    April 10,2021 : Done with the pen and paper design
    
-   April 17,2021 : We have implemented the login and register page for the app and also we are geetting a message with the live location when we use the alert option
+   April 17,2021 : We have implemented the login and register page for the app and also we are getting a message with the live location when we use the alert option
    
    April 23,2021 : We have saved user data to Firebase Authentication and realtime database.Now we are getting emergency contacts information from firebase.Also we modified the SMS with text and link to live location of the logged in user.
    
