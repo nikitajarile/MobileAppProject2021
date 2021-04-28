@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
@@ -86,7 +87,7 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(dashboard.this,com.example.logintask.settings.class);
+                Intent intent = new Intent(dashboard.this, com.example.logintask.settings.class);
                 startActivity(intent);
             }
         });
@@ -173,11 +174,37 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         });
 
         nearby.setOnClickListener(new View.OnClickListener() {
+            Double lat;
+            Double lng;
             @Override
             public void onClick(View v) {
+
+                if (ActivityCompat.checkSelfPermission(dashboard.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(dashboard.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(dashboard.this, new String[]
+                                    {Manifest.permission.ACCESS_FINE_LOCATION},
+                            0);
+                }
+                mFusedLocationClient.requestLocationUpdates
+                        (getLocationRequest(), mLocationCallback,
+                                null /* Looper */).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        stopTrackingLocation();
+                    }
+                });
+
+                LocationListener locationListener = new LocationListener() {
+                    public void onLocationChanged(Location location) {
+                        lng = location.getLongitude();
+                        lat = location.getLatitude();
+                        Log.d("Latitude :",lat.toString());
+                        Log.d("Longitude :",lng.toString());
+                    }
+                };
                 Intent nearbyIntent = new Intent(dashboard.this, NearByPoliceStation.class);
-                nearbyIntent.putExtra("latitude",40.7510083);
-                nearbyIntent.putExtra("longitude",-74.15175);
+                nearbyIntent.putExtra("latitude",lat);
+                nearbyIntent.putExtra("longitude",lng);
+
                 startActivity(nearbyIntent);
             }
         });

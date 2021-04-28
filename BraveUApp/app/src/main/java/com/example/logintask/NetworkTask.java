@@ -91,7 +91,6 @@ public class NetworkTask extends AsyncTask<Double,Void,String>{
             }
 
             placesJSONString = builder.toString();
-            Log.d(TAG, "placesJSONString : "+placesJSONString);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -119,8 +118,6 @@ public class NetworkTask extends AsyncTask<Double,Void,String>{
         try {
             JSONObject result = new JSONObject(s);
             JSONArray jsonArray = result.getJSONArray("results");
-
-            Log.d(TAG, "JSON Array : "+jsonArray.toString());
 
             if(mMap != null) {
                 mMap.clear();
