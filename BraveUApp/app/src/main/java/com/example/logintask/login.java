@@ -47,13 +47,13 @@ public class login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null){
-                    Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login.this, getString(R.string.loginSuccess), Toast.LENGTH_SHORT).show();
                     Intent home = new Intent(login.this, dashboard.class);
                     startActivity(home);
 
                 }
                 else{
-                    Toast.makeText(login.this, "Please Login", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login.this, getString(R.string.enterLogin), Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -66,15 +66,15 @@ public class login extends AppCompatActivity {
             String password = etPassword.getText().toString();
 
             if (email.isEmpty()){
-               etmail.setError("PLEASE ENTER EMAIL ADDRESS");
+               etmail.setError(getString(R.string.enterEmail));
                etmail.requestFocus();
             }
             else if (password.isEmpty()){
-                etPassword.setError("PLEASE INPUT PASSWORD");
+                etPassword.setError(getString(R.string.enterPassword));
                 etPassword.requestFocus();
             }
             else if (email.isEmpty() && password.isEmpty()){
-                Toast.makeText(login.this, " BOTH FIELDS ARE EMPTY!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(login.this, getString(R.string.emptyFields), Toast.LENGTH_SHORT).show();
             }
             else if (!(email.isEmpty() && !password.isEmpty())){
                 progressBar.setVisibility(View.VISIBLE);
@@ -95,7 +95,7 @@ public class login extends AppCompatActivity {
 
             }
             else {
-                Toast.makeText(login.this, "Error Occured",Toast.LENGTH_SHORT).show();
+                Toast.makeText(login.this, getString(R.string.errorOccured),Toast.LENGTH_SHORT).show();
             }
 
 

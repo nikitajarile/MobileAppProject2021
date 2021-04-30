@@ -26,4 +26,19 @@
     <string name="emergencyText"><b>Emergency</b>  Please help!\n\n Find me here:\n</string>
     <string name="APIKEY">AIzaSyAVT9I2J6LzDOTwhJNbK347xZjc6Ginz8U</string>
     <string name="nearby_police_station">NEARBY POLICE STATION</string>
+    <string name="enterName">Please enter name</string>
+    <string name="enterEmail">Please enter email id</string>
+    <string name="enterPassword">Please enter your password</string>
+    <string name="enterContact">Please enter emergency contact</string>
+    <string name="emptyFields">Fields Are Empty!</string>
+    <string name="registrationSuccess">Registration is successful</string>
+    <string name="registerFailed">Failed to register</string>
+    <string name="errorOccured">Error Occurred!</string>
+    <string name="loginSuccess">Login Successful</string>
+    <string name="enterLogin">Please Login</string>
+    <string name="enterOldNum">Please enter old number</string>
+    <string name="enterNewNum">Please enter new number</string>
+    <string name="enterCorrectNum">Please enter correct number</string>
+    <string name="contactUpdate">Contact updated to</string>
+    <string name="numberUpdated">Number is updated</string>
 </resources>

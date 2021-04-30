@@ -53,20 +53,20 @@ public class settings extends AppCompatActivity {
                         String oldNo=previousNum.getText().toString();
                         if(showToast)
                         {
-                            Toast.makeText(getApplicationContext(),"contact updated to" + newNo,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),getString(R.string.contactUpdate) + newNo,Toast.LENGTH_SHORT).show();
                             showToast=false;
                         }
                         if(contact.equals(oldNo))
                         {
 
-                            previousNum.setText("updated");
+                            previousNum.setText(getString(R.string.numberUpdated));
                             showToast=true;
                             databaseReference.child("emergencyContact").setValue(newNo);
                         }
                         else
                         {
-                            if(!previousNum.getText().toString().equals("updated"))
-                            previousNum.setText("invalid num");
+                            if(!previousNum.getText().toString().equals(getString(R.string.numberUpdated)))
+                                previousNum.setText(getString(R.string.enterCorrectNum));
                         }
 
                     }

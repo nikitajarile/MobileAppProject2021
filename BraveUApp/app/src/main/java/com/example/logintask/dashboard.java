@@ -227,7 +227,6 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
 
                             if (ActivityCompat.checkSelfPermission(dashboard.this,Manifest.permission.SEND_SMS)
                                     == PackageManager.PERMISSION_DENIED) {
-                                Log.d("permission", "permission denied to SEND_SMS - requesting it");
                                 ActivityCompat.requestPermissions(dashboard.this,new String[]{Manifest.permission.SEND_SMS}, REQUEST_SMS_PERMISSION);
 
                             }
@@ -243,12 +242,8 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
                             if (location != null) {
                                 mLastLocation = location;
 
-                                Log.i("Location",location.toString());
-                                Log.i("Location",mLastLocation.toString());
-
                                 if (ActivityCompat.checkSelfPermission(dashboard.this,Manifest.permission.SEND_SMS)
                                         == PackageManager.PERMISSION_DENIED) {
-                                    Log.d("permission", "permission denied to SEND_SMS - requesting it");
                                     ActivityCompat.requestPermissions(dashboard.this,new String[]{Manifest.permission.SEND_SMS}, REQUEST_SMS_PERMISSION);
 
                                 }
@@ -273,9 +268,7 @@ public class dashboard extends AppCompatActivity implements FetchAddressTask.OnT
         smsManager.sendTextMessage(contact, null, getString(R.string.emergencyText)+"http://maps.google.com/?q="+mLastLocation.getLatitude()+","+mLastLocation.getLongitude(), null, null);
 
         Toast.makeText(dashboard.this,"Alert message sent!",Toast.LENGTH_LONG).show();
-        Log.i("Message text", getString(R.string.emergencyText)+"http://maps.google.com/?q="+mLastLocation.getLatitude()+","+mLastLocation.getLongitude());
-        Log.i("Dashboard", String.valueOf(mLastLocation.getLatitude()));
-        Log.i("Dashboard", String.valueOf(mLastLocation.getLongitude()));
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode,

@@ -64,18 +64,27 @@ public class signup extends AppCompatActivity {
                 final  String email = emails.getText().toString().trim();
                 String pwd = password.getText().toString().trim();
                 final String contact = emergencyContact.getText().toString().trim();
-                if(email.isEmpty()){
-                    emails.setError("Please enter email id");
+
+                if(userName.isEmpty()){
+                    name.setError(getString(R.string.enterName));
+                    name.requestFocus();
+                }
+                else if(email.isEmpty()){
+                    emails.setError(getString(R.string.enterEmail));
                     emails.requestFocus();
                 }
-                else  if(pwd.isEmpty()){
-                    password.setError("Please enter your password");
+                else if(pwd.isEmpty()){
+                    password.setError(getString(R.string.enterPassword));
                     password.requestFocus();
                 }
-                else  if(email.isEmpty() && pwd.isEmpty()){
-                    Toast.makeText(signup.this,"Fields Are Empty!",Toast.LENGTH_SHORT).show();
+                else if(contact.isEmpty()){
+                    emergencyContact.setError(getString(R.string.enterContact));
+                    emergencyContact.requestFocus();
                 }
-                else  if(!(email.isEmpty() && pwd.isEmpty())){
+                else  if(userName.isEmpty() && contact.isEmpty() && email.isEmpty() && pwd.isEmpty()){
+                    Toast.makeText(signup.this, getString(R.string.emptyFields),Toast.LENGTH_SHORT).show();
+                }
+                else  if(!(userName.isEmpty() && contact.isEmpty() && email.isEmpty() && pwd.isEmpty())){
                     progressBar.setVisibility(View.VISIBLE);
                     firebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(signup.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -107,11 +116,11 @@ public class signup extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
                                             startActivity(new Intent(signup.this, login.class));
-                                            Toast.makeText(signup.this, "Registration is successful", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(signup.this, getString(R.string.registrationSuccess), Toast.LENGTH_SHORT).show();
                                             progressBar.setVisibility(View.GONE);
                                         }
                                         else{
-                                            Toast.makeText(signup.this, "Failed to register", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(signup.this, getString(R.string.registerFailed), Toast.LENGTH_SHORT).show();
                                             progressBar.setVisibility(View.GONE);
                                         }
                                     }
@@ -125,7 +134,7 @@ public class signup extends AppCompatActivity {
                     });
                 }
                 else{
-                    Toast.makeText(signup.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(signup.this, getString(R.string.errorOccured),Toast.LENGTH_SHORT).show();
 
                 }
             }
