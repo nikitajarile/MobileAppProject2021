@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,6 +42,7 @@ public class settings extends AppCompatActivity {
                 final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseuser.getUid());
 
                 databaseReference.addValueEventListener(new ValueEventListener() {
+                    boolean showToast=false;
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         boolean changed=false;
@@ -49,10 +51,16 @@ public class settings extends AppCompatActivity {
                         Log.i("Emergency contact", contact);
 
                         String oldNo=previousNum.getText().toString();
+                        if(showToast)
+                        {
+                            Toast.makeText(getApplicationContext(),"contact updated to" + newNo,Toast.LENGTH_SHORT).show();
+                            showToast=false;
+                        }
                         if(contact.equals(oldNo))
                         {
 
                             previousNum.setText("updated");
+                            showToast=true;
                             databaseReference.child("emergencyContact").setValue(newNo);
                         }
                         else
