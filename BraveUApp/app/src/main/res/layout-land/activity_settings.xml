@@ -10,12 +10,12 @@
 
     <TextView
 
-        android:inputType="number"
         android:id="@+id/textView10"
-        android:layout_width="402dp"
-        android:layout_height="53dp"
+        android:layout_width="826dp"
+        android:layout_height="46dp"
         android:background="#FFFFFF"
         android:backgroundTint="@color/colorPrimary"
+        android:inputType="number"
         android:text="SETTINGS"
         android:textAlignment="center"
         android:textColor="@color/signIn"
@@ -30,9 +30,9 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="413dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="104dp"
+        android:layout_width="792dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="44dp"
         android:background="#FFFFFF"
         android:backgroundTint="@color/editText"
         android:text="Update Emergency Number"
@@ -40,15 +40,14 @@
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="428dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="376dp"
+        android:layout_width="771dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="216dp"
         android:background="#FFFFFF"
         android:backgroundTint="@color/editText"
         android:text="Contact Support"
@@ -56,6 +55,7 @@
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,18 +63,19 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="88dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="4dp"
         android:text="customer support :"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,28 +84,28 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="146dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
         android:text="1800-110-1122"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.273"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_width="197dp"
+        android:layout_height="36dp"
         android:text="support@braveu.com"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.765"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintTop_toTopOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -120,29 +121,31 @@
 
     <EditText
         android:id="@+id/oldNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="476dp"
+        android:layout_height="39dp"
         android:ems="10"
         android:hint="Existing number"
         android:inputType="phone"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/newNum"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/newNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_width="476dp"
+        android:layout_height="39dp"
         android:ems="10"
         android:hint="new number"
         android:inputType="phone"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.916" />
 </androidx.constraintlayout.widget.ConstraintLayout>
