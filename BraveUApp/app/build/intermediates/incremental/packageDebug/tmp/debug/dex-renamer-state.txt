@@ -1,7 +1,0 @@
-#Fri Apr 30 12:16:22 EDT 2021
-base.0=/Users/nikki/Documents/MobileAppProject/MobileAppProject2021/BraveUApp/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-path.1=classes.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=/Users/nikki/Documents/MobileAppProject/MobileAppProject2021/BraveUApp/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
