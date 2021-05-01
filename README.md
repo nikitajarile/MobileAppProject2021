@@ -29,19 +29,21 @@ Team members: Revati Deshmukh, Nikita Jarile and Pranav Kullappa
    Android SDK 26
    SQLite as back end.
   
-  <h2>Pen and Paper design</h2>
-  
-  
-  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/1-welcome_screen.png" width="250px" />
-  
-  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/2-Login.png" width="250px" />
-  
-  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/3-Register.png" width="250px" />
-  
-  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/4-FeatureScreen.png" width="250px" />
-  
-  <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/App%20Design%20Prototype/5-Settings_screen.png" width="250px" />
-  
+  <h2>App Screenshots</h2>
+   
+   <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/AppScreenshots/Screenshot_20210430-205653_BraveU.jpg" width="250px" />
+   
+   <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/AppScreenshots/Screenshot_20210430-205700_BraveU.jpg" width="250px" />
+   
+   <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/AppScreenshots/Screenshot_20210430-205722_BraveU.jpg" width="250px" />
+   
+   <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/AppScreenshots/Screenshot_20210430-205729_BraveU.jpg" width="250px" />
+   
+   <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/AppScreenshots/Screenshot_20210430-205848_BraveU.jpg" width="250px" />
+   
+   <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/AppScreenshots/Screenshot_20210430-205905_BraveU.jpg" width="250px" />
+   
+   <img src="https://github.com/nikitajarile/MobileAppProject2021/blob/main/AppScreenshots/Screenshot_20210430-210552_BraveU.jpg" width="250px" />
    
    
    <h3>Technologies:</h3>
@@ -61,3 +63,5 @@ Team members: Revati Deshmukh, Nikita Jarile and Pranav Kullappa
    April 23,2021 : We have saved user data to Firebase Authentication and realtime database.Now we are getting emergency contacts information from firebase.Also we modified the SMS with text and link to live location of the logged in user.
    
    April 27,2021 : We have added Nearby Police station functionality to the app.Now on clicking nearby option user can view police stations near here.
+   
+   April 28,2021 : We have added record feature.
